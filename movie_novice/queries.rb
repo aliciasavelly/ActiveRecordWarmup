@@ -94,7 +94,11 @@ def pulp_fiction_actors
   # practice using joins
   # display the id and name of all actors in the movie Pulp Fiction
   # hint: use 'select', 'joins', 'where'
-
+  Actor
+    .select(:id, :name)
+    .joins(:castings)
+    .joins(:movies)
+    .where("movies.title = 'Pulp Fiction'").uniq
 end
 
 def uma_movies
